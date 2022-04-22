@@ -1,10 +1,11 @@
 from tkinter.scrolledtext import ScrolledText as st
 from tkinter import *
-from Math_modules import Lcm, factor, solve, solvef, Orderfractions
+from Math_modules import Lcm, factor, solve, solvef, Orderfractions, Graphing
 
 
 class layout:
     def __init__(self):
+        self.b5 = None
         self.b4 = None
         self.complete = None
         self.textarea = None
@@ -36,6 +37,7 @@ class layout:
         a.relwidget(self.b2, 0.05, 0.3, 0.3, 0.340)
         a.relwidget(self.b3, 0.05, 0.3, 0.0, 0.390)
         a.relwidget(self.b4, 0.05, 0.3, 0.6, 0.340)
+        a.relwidget(self.b5, 0.05, 0.3, 0.6, 0.390)
         a.textarea(self.textarea, 0.3, 1.0)
         self.textarea.config(state='disabled')
         pass
@@ -70,6 +72,11 @@ class layout:
         self.complete = True
         pass
 
+    def linear_equations(self):
+        a = Graphing()
+        a.start()
+        self.complete = True
+
     def frames(self, where):
         self.f = Frame(where)
         pass
@@ -80,6 +87,7 @@ class layout:
         self.b2 = Button(where, text='factor', command=self.factor)
         self.b3 = Button(where, text='solve for x', command=self.solveforx)
         self.b4 = Button(where, text='order fractions', command=self.orderfractions)
+        self.b5 = Button(where, text="linear equation", command=self.linear_equations)
         pass
 
     def entry(self, where):

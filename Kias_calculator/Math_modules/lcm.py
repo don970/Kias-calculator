@@ -30,7 +30,9 @@ class Lcm():
         else:
             self.a = Tk()
             self.a.title('Lowest Common Multiple')
-            self.a.geometry("350x350")
+            width = self.a.winfo_screenwidth()
+            height = self.a.winfo_screenheight()
+            self.a.geometry(f'{str(width)}x{str(height)}')
             self.frames(self.a)
             f = self.f
             self.b = Tkinter_Layouts(f)

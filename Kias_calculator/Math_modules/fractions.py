@@ -35,7 +35,9 @@ class solvef:
     def start(self):
         self.a = Tk()
         self.a.title('fraction')
-        self.a.geometry("500x500")
+        width = self.a.winfo_screenwidth()
+        height = self.a.winfo_screenheight()
+        self.a.geometry(f'{str(width)}x{str(height)}')
         self.frames(self.a)
         f = self.f
         self.b = Tkinter_Layouts(f)

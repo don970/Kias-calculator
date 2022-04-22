@@ -2,8 +2,9 @@ from tkinter import *
 from layout import layout
 
 a = Tk()
-a.geometry('600x600')
-
+width = a.winfo_screenwidth()
+height = a.winfo_screenheight()
+a.geometry(f'{str(width)}x{str(height)}')
 
 class Start:
     def __init__(self, master):

@@ -1,10 +1,15 @@
 from tkinter import *
 from tkinter.scrolledtext import ScrolledText as st
 from packages import Tkinter_Layouts, Functions
+b = None
 
 
-class solve:
+class Graphing:
     def __init__(self):
+        self.a1 = None
+        self.answer = None
+        self.lcm1 = None
+        self.greater = None
         self.b = None
         self.f = None
         self.textarea = None
@@ -24,7 +29,7 @@ class solve:
 
     def start(self):
         self.a = Tk()
-        self.a.title('Solve for x')
+        self.a.title('Graphing')
         width = self.a.winfo_screenwidth()
         height = self.a.winfo_screenheight()
         self.a.geometry(f'{str(width)}x{str(height)}')
@@ -47,7 +52,7 @@ class solve:
 
     def submit(self):
         e0 = self.e0.get()
-        self.solve_for_x(str(e0))
+        # self.solve(str(e0))
 
     def frames(self, where):
         self.f = Frame(where)
@@ -66,7 +71,7 @@ class solve:
 
     def label(self, where):
         self.l = Label(where, text="Author Donald Ford")
-        self.l1 = Label(where, text="enter equation as 2 x(+)21/5=3")
+        self.l1 = Label(where, text="enter question")
         self.l2 = Label(where, text="enter second number")
         pass
 
@@ -85,7 +90,7 @@ class solve:
             self.b.relwidget(self.e0, 0.05, 0.5, 0.0, 0.500)
             self.b.relwidget(self.b1, 0.07, 0.1, 0.450, 0.600)
         elif mode == 1:  # enter equation
-            self.b.relwidget(self.l1, 0.09, 0.9, 0.0, 0.450)
+            self.b.relwidget(self.l1, 0.1, 0.9, 0.0, 0.450)
             self.b.relwidget(self.e0, 0.07, 0.7, 0.1, 0.530)
             self.b.relwidget(self.b1, 0.07, 0.1, 0.450, 0.560)
         elif mode == 2:
@@ -93,36 +98,22 @@ class solve:
             self.b.relwidget(self.e0, 0.05, 0.5, 0.5, 0.520)
             self.b.relwidget(self.b1, 0.07, 0.1, 0.450, 0.580)
 
-    def solve_for_x(self, aa):
-        try:
-            eq = aa
-            eq1 = eq.split()  # split first number from rest
-            l = ['(+)', '(-)']
-            if l[0] in eq1[1].strip('\n'):
-                eq2 = eq1[1].split(l[0])
-                self.enter('finding type of equation:' + str(eq2))
-                eq3 = eq2[1].split('=')
-                self.enter('splitting equation up' + str(eq2))
-                eq4 = eq3[0].split('/')
-                self.enter("further splitting equation")
-                a = int(int(eq3[1]) * int(eq4[1]))
-                self.enter(f'multiplying {str(eq3[1])} and {str(eq4[1])} = {str(a)}')
-                self.enter(f'subtracting {str(a)} and {str(eq4[0])} = {int(a) - int(eq4[0])}')
-                a = a - int(eq4[0])
-                v = 1
-                self.enter('finding bigger number')
-                d = int(a) / int(eq1[0])
-                if int(a) > int(eq1[0]):
-                    d = int(eq1[0]) / int(a)
-                    v = 0
-                if v == 0:
-                    self.enter(f'dividing {str(eq1[0])} and {str(a)}')
-                    answer = f'{str(eq2[0])} = {str(int(d))}'
-                    self.enter(answer)
-                else:
-                    d = int(a) / int(eq1[0])
-                    self.enter(f'dividing {str(a)} and {str(eq1[0])}')
-                    answer = f'{str(eq2[0])} = {str(int(d))}'
-                    self.enter(answer)
-        except ValueError and TypeError as e:
-            self.enter(e)
+    def lcm(self, x, y):
+        # choose the greater number
+        if x > y:
+            greater = x
+            self.greater = greater
+        else:
+            greater = y
+            self.greater = greater
+
+        while True:
+            if (greater % x == 0) and (greater % y == 0):
+                lcm1 = greater
+                lcm1 = lcm1
+                return int(lcm1)
+            greater += 1
+
+    def print(self, *a):
+        self.textarea.insert(END, str(a) + '\n')
+        pass

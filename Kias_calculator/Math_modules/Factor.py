@@ -28,7 +28,9 @@ class factor:
     def start(self):
         self.a = Tk()
         self.a.title('factor')
-        self.a.geometry("350x350")
+        width = self.a.winfo_screenwidth()
+        height = self.a.winfo_screenheight()
+        self.a.geometry(f'{str(width)}x{str(height)}')
         self.frames(self.a)
         f = self.f
         self.b = Tkinter_Layouts(f)
