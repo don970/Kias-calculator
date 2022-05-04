@@ -1,11 +1,9 @@
 from tkinter import *
 from layout import layout
+from layout import os_check
 
 a = Tk()
-width = a.winfo_screenwidth()
-height = a.winfo_screenheight()
-a.geometry(f'{str(width)}x{str(height)}')
-
+c = os_check(a, '600x650')
 class Start:
     def __init__(self, master):
         self.complete = None

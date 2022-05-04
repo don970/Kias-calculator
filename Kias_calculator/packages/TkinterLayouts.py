@@ -28,6 +28,15 @@ class Tkinter_Layouts:
         return False
         pass
 
+    def ctextarea(self, what: object, relh: float, relw: float, relx: float, rely: float) -> bool:
+        what.place(relheight=relh, relwidth=relw, relx=relx, rely=rely)
+        self.complete = True
+        if self.complete:
+            return True
+        return False
+        pass
+
+
     # for testing purposes
     def pack(self, what: object) -> bool:
         what.pack()

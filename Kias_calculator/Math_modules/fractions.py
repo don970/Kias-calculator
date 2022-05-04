@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter.scrolledtext import ScrolledText as st
 from packages import Tkinter_Layouts, Functions
 from .Factor import factor
+from layout.os_dep import os_check
 b = None
 
 
@@ -35,9 +36,7 @@ class solvef:
     def start(self):
         self.a = Tk()
         self.a.title('fraction')
-        width = self.a.winfo_screenwidth()
-        height = self.a.winfo_screenheight()
-        self.a.geometry(f'{str(width)}x{str(height)}')
+        c = os_check(self.a, '600x650')
         self.frames(self.a)
         f = self.f
         self.b = Tkinter_Layouts(f)
@@ -347,7 +346,7 @@ class solvef:
                     a0, b0 = eq.split(al[2])
                     a1 = a0.split('/')
                     b1 = b0.split('/')
-                    self.print('using Multiplying Fractions Formula: a/b * c/d = a*c / b*d')
+                    self.print('using Multiplying Fractions Formula: a/place * c/d = a*c / place*d')
                     sleep(.5)
                     step3 = a1
                     step3a = b1
@@ -365,12 +364,12 @@ class solvef:
             elif al[3] in eq:
                 try:
                     self.print("Division Detected")
-                    self.print('using Dividing Fractions Formula: a/b % c/d = a*d / b*c')
+                    self.print('using Dividing Fractions Formula: a/place % c/d = a*d / place*c')
                     a0, b0 = eq.split(al[3])
                     self.print('splitting Equation')
                     a1 = a0.split('/')
                     b1 = b0.split('/')
-                    self.print('using Multiplying Fractions Formula: a/b * c/d = a*c / b*d')
+                    self.print('using Multiplying Fractions Formula: a/place * c/d = a*c / place*d')
                     step4 = a1
                     step4a = b1
                     self.print(step4, step4a)

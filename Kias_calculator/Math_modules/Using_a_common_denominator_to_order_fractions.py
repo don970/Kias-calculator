@@ -2,7 +2,7 @@ from tkinter import *
 from tkinter.scrolledtext import ScrolledText as st
 from packages import Tkinter_Layouts, Functions
 from .lcm import Lcm as lcm
-
+from layout.os_dep import os_check
 
 class Orderfractions:
     def __init__(self):
@@ -27,9 +27,7 @@ class Orderfractions:
     def start(self):
         self.a = Tk()
         self.a.title('factor')
-        width = self.a.winfo_screenwidth()
-        height = self.a.winfo_screenheight()
-        self.a.geometry(f'{str(width)}x{str(height)}')
+        c = os_check(self.a, '600x650')
         self.frames(self.a)
         f = self.f
         self.b = Tkinter_Layouts(f)
@@ -93,7 +91,7 @@ class Orderfractions:
             self.b.relwidget(self.b1, 0.07, 0.1, 0.450, 0.560)
         elif mode == 2:
             self.l1 = Label(text=text)
-            self.b1 = Button(text='submit', command=cmd)
+            self.b1 = Button(text='submit as 1/2,2/3', command=cmd)
             self.b.relwidget(self.l1, 0.07, 0.5, 0.5, 0.450)
             self.b.relwidget(self.e0, 0.05, 0.5, 0.5, 0.520)
             self.b.relwidget(self.b1, 0.07, 0.1, 0.450, 0.580)
@@ -101,10 +99,10 @@ class Orderfractions:
     def order_fractions(self, a9):
         if True:
             try:
-                e, q = a9.split()
+                e, q = a9.split(',')
                 e1 = e.split('/')
                 q1 = q.split('/')
-                print(e1, q1)
+                print(e1[1], q1[1])
                 a1 = lcm()
                 a1 = a1.start(0, int(e1[1]), int(q1[1]))
                 a0 = int(int(a1) / int(e1[1]))

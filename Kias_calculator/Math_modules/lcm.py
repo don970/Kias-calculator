@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter.scrolledtext import ScrolledText as st
 from packages import Tkinter_Layouts, Functions
-
+from layout.os_dep import os_check
 
 class Lcm():
 
@@ -30,9 +30,7 @@ class Lcm():
         else:
             self.a = Tk()
             self.a.title('Lowest Common Multiple')
-            width = self.a.winfo_screenwidth()
-            height = self.a.winfo_screenheight()
-            self.a.geometry(f'{str(width)}x{str(height)}')
+            c = os_check(self.a, '600x650')
             self.frames(self.a)
             f = self.f
             self.b = Tkinter_Layouts(f)
@@ -53,7 +51,7 @@ class Lcm():
     def submit(self):
         e0 = int(self.e0.get())
         e1 = int(self.e1.get())
-        self.solve(e0, e1)
+        self.solve(1, e0, e1)
 
     def frames(self, where):
         self.f = Frame(where)
@@ -104,18 +102,20 @@ class Lcm():
 
     def solve(self, mode, int0, int1):
         try:
+            b = True
             # choose the greater number
             if int0 > int1:
                 greater = int0
             else:
                 greater = int1
 
-            if True:
+            while b:
                 if (greater % int0 == 0) and (greater % int1 == 0):
                     lcm1 = greater
                     lcm2 = f"lowest common multiple = {str(lcm1)} \n"
                     if mode != 0:
                         self.enter(str(lcm2))
+                    b = False
                     return lcm1
                 greater += 1
         except ValueError and TypeError as e:

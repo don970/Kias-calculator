@@ -2,7 +2,7 @@ from tkinter import *
 from tkinter.scrolledtext import ScrolledText as st
 from packages import Tkinter_Layouts, Functions
 from .lcm import Lcm as lcm
-
+from layout import os_check
 
 class Orderfractions:
     def __init__(self):
@@ -27,9 +27,7 @@ class Orderfractions:
     def start(self):
         self.a = Tk()
         self.a.title('factor')
-        width = self.a.winfo_screenwidth()
-        height = self.a.winfo_screenheight()
-        self.a.geometry(f'{str(width)}x{str(height)}')
+        c = os_check(self.a, '600x650')
         self.frames(self.a)
         f = self.f
         self.b = Tkinter_Layouts(f)
